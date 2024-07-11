@@ -5,13 +5,13 @@ interface DestinationAndDateStepProps {
     isGuestsInputOpen: boolean;
     closeGuestsInput: () => void;
     openGuestsInput: () => void;
-  }
-  
-  export function DestinationAndDateStep({
+}
+
+export function DestinationAndDateStep({
     closeGuestsInput,
     isGuestsInputOpen,
     openGuestsInput,
-  }: DestinationAndDateStepProps) {
+}: DestinationAndDateStepProps) {
     return (
         <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
             <div className="flex items-center gap-2 flex-1">

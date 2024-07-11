@@ -2,13 +2,13 @@ import { Plus, User, X } from "lucide-react";
 import { FormEvent } from "react";
 
 interface ConfirmTripModalProps {
-  closeConfirmTripModal: () => void
-  createTrip: (event: FormEvent<HTMLFormElement>) => void
+    closeConfirmTripModal: () => void
+    createTrip: (event: FormEvent<HTMLFormElement>) => void
 }
 
 export function ConfirmTripModal({
-  closeConfirmTripModal,
-  createTrip,
+    closeConfirmTripModal,
+    createTrip,
 }: ConfirmTripModalProps) {
     return (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
