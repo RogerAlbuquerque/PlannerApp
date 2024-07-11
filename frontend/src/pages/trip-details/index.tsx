@@ -66,13 +66,7 @@ export function TripDetailsPage() {
 
           </div>
         </div>
-
         <div className="w-80 space-y-6">
-
-
-
-
-
           <div className="space-y-6">
             <h2 className="font-semibold text-xl">Important Links</h2>
 
@@ -105,13 +99,6 @@ export function TripDetailsPage() {
               Register new link
             </button>
           </div>
-
-
-
-
-
-
-
           <div className="w-full h-px bg-zinc-800" />
 
           <div className="space-y-6">
