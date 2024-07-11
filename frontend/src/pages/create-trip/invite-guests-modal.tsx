@@ -6,9 +6,9 @@ interface InviteGuestsModalProps {
     emailsToInvite: string[];
     addNewEmailToInvite: (event: FormEvent<HTMLFormElement>) => void;
     removeEmailFromInvites: (email: string) => void;
-  }
+}
 
-export function InviteGuestsModal({closeGuestsModal, emailsToInvite,addNewEmailToInvite,removeEmailFromInvites}: InviteGuestsModalProps) {
+export function InviteGuestsModal({ closeGuestsModal, emailsToInvite, addNewEmailToInvite, removeEmailFromInvites }: InviteGuestsModalProps) {
     return (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
             <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">

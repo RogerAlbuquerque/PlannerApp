@@ -6,8 +6,8 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily:{
-        sans:'Inter',
+      fontFamily: {
+        sans: 'Inter',
       }
     },
     boxShadow: {
