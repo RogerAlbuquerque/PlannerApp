@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Plus, Settings2 } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useState } from "react";
 import { CreateActivityModal } from "./create-activity-modal";
 import { ImportantLinks } from "./important-links";
@@ -18,7 +18,7 @@ export function TripDetailsPage() {
 
   return (
     <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
-      
+
       <main className="flex gap-16 px-4">
         <div className="flex-1 space-y-6">
           <div className="flex items-center justify-between">
