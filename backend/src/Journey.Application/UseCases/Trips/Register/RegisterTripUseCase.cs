@@ -16,7 +16,7 @@ public class RegisterTripUseCase
             throw new ArgumentException("Name cannot be empty");
         }
 
-        if (request.StartDate < DateTime.UtcNow.Date)
+        if (request.StartDate.Date < DateTime.UtcNow.Date)
         {
             throw new ArgumentException("Trip cannot be booked for a past date");
         }
