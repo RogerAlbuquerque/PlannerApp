@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Journey.Application\Journey.Application.csproj" />
+    <ProjectReference Include="..\..\src\Planner.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

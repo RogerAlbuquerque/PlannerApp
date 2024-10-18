@@ -1,6 +1,6 @@
-﻿using Journey.Communication.Enums;
+﻿using Planner.Communication.Enums;
 
-namespace Journey.Communication.Responses;
+namespace Planner.Communication.Responses;
 public class ResponseActivityJson
 {
     public Guid Id { get; set; }

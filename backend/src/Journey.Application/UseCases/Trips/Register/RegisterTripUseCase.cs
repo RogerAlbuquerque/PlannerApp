@@ -1,7 +1,7 @@
-﻿using Journey.Communication.Requests;
-using Journey.Exception.ExceptionBase;
+﻿using Planner.Communication.Requests;
+using Planner.Exception.ExceptionBase;
 
-namespace Journey.Application.UseCases.Trips.Register;
+namespace Planner.Application.UseCases.Trips.Register;
 
 public class RegisterTripUseCase
 {

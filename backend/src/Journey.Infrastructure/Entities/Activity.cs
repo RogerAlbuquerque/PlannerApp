@@ -1,6 +1,6 @@
-﻿using Journey.Infrastructure.Enums;
+﻿using Planner.Infrastructure.Enums;
 
-namespace Journey.Infrastructure.Entities;
+namespace Planner.Infrastructure.Entities;
 public class Activity
 {
     public Guid Id { get; set; } = Guid.NewGuid();

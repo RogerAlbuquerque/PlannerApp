@@ -1,9 +1,9 @@
-﻿using Journey.Application.UseCases.Trips.Register;
-using Journey.Communication.Requests;
-using Journey.Exception.ExceptionBase;
+﻿using Planner.Application.UseCases.Trips.Register;
+using Planner.Communication.Requests;
+using Planner.Exception.ExceptionBase;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Journey.Api.Controllers;
+namespace Planner.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

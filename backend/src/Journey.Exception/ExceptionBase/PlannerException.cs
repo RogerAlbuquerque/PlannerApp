@@ -1,4 +1,4 @@
-﻿namespace Journey.Exception.ExceptionBase
+﻿namespace Planner.Exception.ExceptionBase
 {
     public class PlannerException : SystemException
     {
