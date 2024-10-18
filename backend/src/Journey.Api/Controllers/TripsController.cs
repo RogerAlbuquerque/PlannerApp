@@ -1,5 +1,6 @@
 ﻿using Journey.Application.UseCases.Trips.Register;
 using Journey.Communication.Requests;
+using Journey.Exception.ExceptionBase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Journey.Api.Controllers;
@@ -11,10 +12,18 @@ public class TripsController : ControllerBase
     [HttpPost]
     public IActionResult Register([FromBody] RequestRegisterTripJson request)
     {
-        var useCase = new RegisterTripUseCase();
+        try 
+        {
+            var useCase = new RegisterTripUseCase();
 
-        useCase.Execute(request);
+            useCase.Execute(request);
 
-        return Created();
+            return Created();
+        }
+
+        catch (PlannerException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }
