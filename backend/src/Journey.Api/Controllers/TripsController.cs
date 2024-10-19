@@ -25,5 +25,9 @@ public class TripsController : ControllerBase
         {
             return BadRequest(ex.Message);
         }
+        catch 
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Unknown error");
+        }
     }
 }
