@@ -1,7 +1,7 @@
-﻿using Planner.Application.UseCases.Trips.Register;
+﻿using Microsoft.AspNetCore.Mvc;
+using Planner.Application.UseCases.Trips.Register;
 using Planner.Communication.Requests;
 using Planner.Exception.ExceptionBase;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Planner.Api.Controllers;
 
@@ -12,7 +12,7 @@ public class TripsController : ControllerBase
     [HttpPost]
     public IActionResult Register([FromBody] RequestRegisterTripJson request)
     {
-        try 
+        try
         {
             var useCase = new RegisterTripUseCase();
 
@@ -25,7 +25,7 @@ public class TripsController : ControllerBase
         {
             return BadRequest(ex.Message);
         }
-        catch 
+        catch
         {
             return StatusCode(StatusCodes.Status500InternalServerError, "Unknown error");
         }

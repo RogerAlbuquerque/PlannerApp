@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Planner.Application.csproj" />
+    <ProjectReference Include="..\..\src\Planner.Application\Planner.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
