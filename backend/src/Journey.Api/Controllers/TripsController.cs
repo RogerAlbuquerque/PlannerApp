@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Planner.Application.UseCases.Trips.GetAll;
 using Planner.Application.UseCases.Trips.Register;
 using Planner.Communication.Requests;
 using Planner.Exception.ExceptionBase;
@@ -16,9 +17,9 @@ public class TripsController : ControllerBase
         {
             var useCase = new RegisterTripUseCase();
 
-            useCase.Execute(request);
+            var response = useCase.Execute(request);
 
-            return Created();
+            return Created(string.Empty, response);
         }
 
         catch (PlannerException ex)
@@ -29,5 +30,13 @@ public class TripsController : ControllerBase
         {
             return StatusCode(StatusCodes.Status500InternalServerError, "Unknown error");
         }
+    }
+
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        var userCase = new GetAllTripsUseCase();
+        var response = userCase.Execute();
+        return Ok(response);
     }
 }
