@@ -7,13 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Journey.Communication\Journey.Communication.csproj" />
-    <ProjectReference Include="..\Journey.Exception\Journey.Exception.csproj" />
-    <ProjectReference Include="..\Journey.Infrastructure\Journey.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UseCases\" />
+    <ProjectReference Include="..\Journey.Communication\Planner.Communication.csproj" />
+    <ProjectReference Include="..\Journey.Exception\Planner.Exception.csproj" />
+    <ProjectReference Include="..\Journey.Infrastructure\Planner.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

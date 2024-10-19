@@ -1,5 +1,7 @@
 ﻿using Planner.Communication.Requests;
+using Planner.Exception;
 using Planner.Exception.ExceptionBase;
+using System.Reflection;
 
 namespace Planner.Application.UseCases.Trips.Register;
 
@@ -14,17 +16,17 @@ public class RegisterTripUseCase
     {
         if (string.IsNullOrWhiteSpace(request.Name))
         {
-            throw new PlannerException("Name cannot be empty");
+            throw new PlannerException(ResourceErrorMessages.NAME_EMPTY);
         }
 
         if (request.StartDate.Date < DateTime.UtcNow.Date)
         {
-            throw new PlannerException("Trip cannot be booked for a past date");
+            throw new PlannerException(ResourceErrorMessages.DATE_TRIP_MUST_BE_LATER_THAN_TODAY);
         }
 
         if (request.EndDate.Date <= request.StartDate.Date)
         {
-            throw new PlannerException("The trip must end after the start date");
+            throw new PlannerException(ResourceErrorMessages.END_DATE_TRIP_MUST_BE_LATER_START_DATE);
         }
     }
 
