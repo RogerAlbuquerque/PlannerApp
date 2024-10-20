@@ -6,6 +6,7 @@ namespace Planner.Infrastructure;
 public class PlannerDbContext : DbContext
 {
     public DbSet<Trip> Trips { get; set; }
+    public DbSet<Activity> Activities { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

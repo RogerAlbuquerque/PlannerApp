@@ -1,4 +1,5 @@
-﻿using Planner.Communication.Responses;
+﻿using Microsoft.EntityFrameworkCore;
+using Planner.Communication.Responses;
 using Planner.Infrastructure;
 
 namespace Planner.Application.UseCases.Trips.GetById;
@@ -9,7 +10,10 @@ public class GetTripByIdUseCase
     {
         var dbContext = new PlannerDbContext();
 
-        var trip = dbContext.Trips.FirstOrDefault(trip => trip.Id == id);
+        var trip = dbContext
+            .Trips
+            .Include(trip => trip.Activities)
+            .FirstOrDefault(trip => trip.Id == id);
 
         return new ResponseTripJson
         {
