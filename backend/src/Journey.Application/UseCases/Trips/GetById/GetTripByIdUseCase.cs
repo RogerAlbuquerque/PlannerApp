@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Planner.Communication.Responses;
+using Planner.Exception;
+using Planner.Exception.ExceptionBase;
 using Planner.Infrastructure;
 
 namespace Planner.Application.UseCases.Trips.GetById;
@@ -14,6 +16,11 @@ public class GetTripByIdUseCase
             .Trips
             .Include(trip => trip.Activities)
             .FirstOrDefault(trip => trip.Id == id);
+
+        if (trip is null)
+        {
+            throw new PlannerException(ResourceErrorMessages.TRIP_NOT_FOUND);
+        }
 
         return new ResponseTripJson
         {
