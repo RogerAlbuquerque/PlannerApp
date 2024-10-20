@@ -3,6 +3,7 @@ using Planner.Application.UseCases.Trips.GetAll;
 using Planner.Application.UseCases.Trips.GetById;
 using Planner.Application.UseCases.Trips.Register;
 using Planner.Communication.Requests;
+using Planner.Communication.Responses;
 using Planner.Exception.ExceptionBase;
 
 namespace Planner.Api.Controllers;
@@ -12,6 +13,8 @@ namespace Planner.Api.Controllers;
 public class TripsController : ControllerBase
 {
     [HttpPost]
+    [ProducesResponseType(typeof(ResponseShortTripJson), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     public IActionResult Register([FromBody] RequestRegisterTripJson request)
     {
         try
@@ -34,6 +37,7 @@ public class TripsController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(ResponseTripJson), StatusCodes.Status200OK)]
     public IActionResult GetAll()
     {
         var userCase = new GetAllTripsUseCase();
@@ -43,6 +47,7 @@ public class TripsController : ControllerBase
 
     [HttpGet]
     [Route("{id}")]
+    [ProducesResponseType(typeof(ResponseTripJson), StatusCodes.Status200OK)]
     public IActionResult GetById([FromRoute] Guid id) 
     {
         var useCase = new GetTripByIdUseCase();
