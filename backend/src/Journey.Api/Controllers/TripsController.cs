@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Planner.Application.UseCases.Trips.GetAll;
+using Planner.Application.UseCases.Trips.GetById;
 using Planner.Application.UseCases.Trips.Register;
 using Planner.Communication.Requests;
 using Planner.Exception.ExceptionBase;
@@ -37,6 +38,16 @@ public class TripsController : ControllerBase
     {
         var userCase = new GetAllTripsUseCase();
         var response = userCase.Execute();
+        return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("{id}")]
+    public IActionResult GetById([FromRoute] Guid id) 
+    {
+        var useCase = new GetTripByIdUseCase();
+
+        var response = useCase.Execute(id);
         return Ok(response);
     }
 }
