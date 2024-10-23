@@ -16,7 +16,7 @@ public class ExceptionFilter : IExceptionFilter
         else if (context.Exception is ErrorOnValidationException)
         {
             context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
-            context.Result = new NotFoundObjectResult(context.Exception.Message);
+            context.Result = new BadRequestObjectResult(context.Exception.Message);
         }
     }
 }
