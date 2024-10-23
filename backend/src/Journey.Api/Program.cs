@@ -8,7 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddMvc(config => config.Filters.Add(typeof(ExceptionFilter)));
-
+ 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
