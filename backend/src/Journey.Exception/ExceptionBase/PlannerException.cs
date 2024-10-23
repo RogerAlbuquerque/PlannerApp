@@ -1,6 +1,6 @@
 ﻿namespace Planner.Exception.ExceptionBase;
 
-public class PlannerException : SystemException
+public abstract class PlannerException : SystemException
 {
     public PlannerException(string message) : base(message)
     {

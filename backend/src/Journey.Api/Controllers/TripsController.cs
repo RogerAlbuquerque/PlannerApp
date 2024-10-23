@@ -17,23 +17,11 @@ public class TripsController : ControllerBase
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     public IActionResult Register([FromBody] RequestRegisterTripJson request)
     {
-        try
-        {
-            var useCase = new RegisterTripUseCase();
+        var useCase = new RegisterTripUseCase();
 
-            var response = useCase.Execute(request);
+        var response = useCase.Execute(request);
 
-            return Created(string.Empty, response);
-        }
-
-        catch (PlannerException ex)
-        {
-            return BadRequest(ex.Message);
-        }
-        catch
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Unknown error");
-        }
+        return Created(string.Empty, response);
     }
 
     [HttpGet]
@@ -51,21 +39,10 @@ public class TripsController : ControllerBase
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
     public IActionResult GetById([FromRoute] Guid id) 
     {
-        try
-        {
-            var useCase = new GetTripByIdUseCase();
+        var useCase = new GetTripByIdUseCase();
 
-            var response = useCase.Execute(id);
-            return Ok(response);
-        }
-        catch (PlannerException ex)
-        {
-            return NotFound(ex.Message);
-        }
-        catch
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Unknown error");
-        }
+        var response = useCase.Execute(id);
+        return Ok(response);
 
     }
 }
