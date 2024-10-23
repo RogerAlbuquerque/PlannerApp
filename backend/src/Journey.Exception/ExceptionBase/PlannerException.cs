@@ -1,4 +1,6 @@
-﻿namespace Planner.Exception.ExceptionBase;
+﻿using System.Net;
+
+namespace Planner.Exception.ExceptionBase;
 
 public abstract class PlannerException : SystemException
 {
@@ -6,5 +8,7 @@ public abstract class PlannerException : SystemException
     {
     
     }
+
+    public abstract HttpStatusCode GetStatusCode();
 
 }

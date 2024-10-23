@@ -1,24 +1,18 @@
-﻿
+﻿using Planner.Exception.ExceptionBase;
+using System.Net;
 
+namespace Planner.Application.UseCases.Trips.Register;
 
-
-
-
-namespace Planner.Application.UseCases.Trips.Register
+public class ErrorOnValidationException : PlannerException
 {
-    [Serializable]
-    internal class ErrorOnValidationException : System.Exception
+
+
+    public ErrorOnValidationException(string message) : base(message)
     {
-        public ErrorOnValidationException()
-        {
-        }
+    }
 
-        public ErrorOnValidationException(string? message) : base(message)
-        {
-        }
-
-        public ErrorOnValidationException(string? message, System.Exception? innerException) : base(message, innerException)
-        {
-        }
+    public override HttpStatusCode GetStatusCode()
+    {
+        return HttpStatusCode.BadRequest;
     }
 }

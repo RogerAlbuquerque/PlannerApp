@@ -1,8 +1,15 @@
-﻿namespace Planner.Exception.ExceptionBase;
+﻿using System.Net;
+
+namespace Planner.Exception.ExceptionBase;
 
 public class NotFoundException : PlannerException
 {
     public NotFoundException(string message) : base(message)
     {
+    }
+
+    public override HttpStatusCode GetStatusCode()
+    {
+        return HttpStatusCode.NotFound;
     }
 }

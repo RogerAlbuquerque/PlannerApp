@@ -8,15 +8,16 @@ public class ExceptionFilter : IExceptionFilter
 {
     public void OnException(ExceptionContext context)
     {
-        if(context.Exception is NotFoundException)
+        if(context.Exception is PlannerException)
         {
-            context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
-            context.Result = new NotFoundObjectResult(context.Exception.Message);
+            var plannerException = (PlannerException)context.Exception;
+            context.HttpContext.Response.StatusCode = (int)plannerException.GetStatusCode();
+            context.Result = new ObjectResult(context.Exception.Message);
         }
-        else if (context.Exception is ErrorOnValidationException)
+        else
         {
-            context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
-            context.Result = new BadRequestObjectResult(context.Exception.Message);
+            context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            context.Result = new ObjectResult("Unknow error");
         }
     }
 }
