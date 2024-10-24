@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Planner.Application.UseCases.Trips.Delete;
 using Planner.Application.UseCases.Trips.GetAll;
 using Planner.Application.UseCases.Trips.GetById;
 using Planner.Application.UseCases.Trips.Register;
@@ -44,4 +45,16 @@ public class TripsController : ControllerBase
         return Ok(response);
 
     }
+
+    [HttpDelete]
+    [Route("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+    public IActionResult Delete([FromRoute] Guid id)
+    {
+        var useCase = new DeleteTripByIdUseCase();
+        useCase.Execute(id);
+        return NoContent();
+    }
+
 }
