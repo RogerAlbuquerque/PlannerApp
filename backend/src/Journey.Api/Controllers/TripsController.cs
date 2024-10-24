@@ -4,7 +4,6 @@ using Planner.Application.UseCases.Trips.GetById;
 using Planner.Application.UseCases.Trips.Register;
 using Planner.Communication.Requests;
 using Planner.Communication.Responses;
-using Planner.Exception.ExceptionBase;
 
 namespace Planner.Api.Controllers;
 
