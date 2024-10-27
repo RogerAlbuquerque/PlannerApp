@@ -2,10 +2,18 @@
 
 namespace Planner.Exception.ExceptionBase;
 
-public class NotFoundException : PlannerException
+public class NotFoundException(string message) : PlannerException(message)
 {
-    public NotFoundException(string message) : base(message)
+    //public NotFoundException(string message) : base(message)
+    //{
+    //}
+
+    public override IList<string> GetErrorMessages()
     {
+        return new List<string>()
+        {
+            Message
+        };
     }
 
     public override HttpStatusCode GetStatusCode()

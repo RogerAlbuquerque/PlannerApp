@@ -2,13 +2,10 @@
 
 namespace Planner.Exception.ExceptionBase;
 
-public abstract class PlannerException : SystemException
+public abstract class PlannerException(string message) : SystemException(message)
 {
-    public PlannerException(string message) : base(message)
-    {
-    
-    }
 
     public abstract HttpStatusCode GetStatusCode();
+    public abstract IList<string> GetErrorMessages();
 
 }

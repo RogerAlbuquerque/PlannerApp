@@ -1,6 +1,6 @@
 ﻿using Planner.Communication.Requests;
 using Planner.Communication.Responses;
-using Planner.Exception;
+using Planner.Exception.ExceptionsBase;
 using Planner.Infrastructure;
 using Planner.Infrastructure.Entities;
 
@@ -38,19 +38,14 @@ public class RegisterTripUseCase
 
     private void Validate(RequestRegisterTripJson request)
     {
-        if (string.IsNullOrWhiteSpace(request.Name))
-        {
-            throw new ErrorOnValidationException(ResourceErrorMessages.NAME_EMPTY);
-        }
+        var validator = new RegisterTripValidator();
+        var result = validator.Validate(request);
 
-        if (request.StartDate.Date < DateTime.UtcNow.Date)
+        if (result.IsValid == false)
         {
-            throw new ErrorOnValidationException(ResourceErrorMessages.DATE_TRIP_MUST_BE_LATER_THAN_TODAY);
-        }
+            var errorMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
 
-        if (request.EndDate.Date <= request.StartDate.Date)
-        {
-            throw new ErrorOnValidationException(ResourceErrorMessages.END_DATE_TRIP_MUST_BE_LATER_START_DATE);
+            throw new ErrorOnValidationException(errorMessages);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Planner.Exception.ExceptionBase;
+using Planner.Communication.Responses;
 
 namespace Planner.Api.Filters;
 
@@ -11,13 +12,22 @@ public class ExceptionFilter : IExceptionFilter
         if(context.Exception is PlannerException)
         {
             var plannerException = (PlannerException)context.Exception;
+
             context.HttpContext.Response.StatusCode = (int)plannerException.GetStatusCode();
-            context.Result = new ObjectResult(context.Exception.Message);
+            
+            var responseJson = new ResponseErrorsJson(plannerException.GetErrorMessages());
+            
+            context.Result = new ObjectResult(responseJson);
         }
         else
         {
             context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
-            context.Result = new ObjectResult("Unknow error");
+
+            //var list = new List<string>();
+            //list.Add("Unknow error");
+
+            var responseJson = new ResponseErrorsJson(new List<string> {"Unknow error"});
+            context.Result = new ObjectResult(responseJson);
         }
     }
 }

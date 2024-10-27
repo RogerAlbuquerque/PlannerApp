@@ -1,18 +1,19 @@
 ﻿using Planner.Exception.ExceptionBase;
 using System.Net;
 
-namespace Planner.Application.UseCases.Trips.Register;
+namespace Planner.Exception.ExceptionsBase;
 
-public class ErrorOnValidationException : PlannerException
+public class ErrorOnValidationException(IList<string> errors) : PlannerException(string.Empty)
 {
+    private readonly IList<string> _errors = errors;
 
-
-    public ErrorOnValidationException(string message) : base(message)
+    public override IList<string> GetErrorMessages()
     {
+        return _errors;
     }
-
     public override HttpStatusCode GetStatusCode()
     {
         return HttpStatusCode.BadRequest;
     }
+
 }
