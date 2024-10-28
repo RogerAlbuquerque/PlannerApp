@@ -6,15 +6,10 @@ namespace Planner.Infrastructure;
 public class PlannerDbContext : DbContext
 {
     public DbSet<Trip> Trips { get; set; }
+    public DbSet<Activity> Activities { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=\\\\wsl.localhost\\Debian\\home\\roger\\Documents\\journey");
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Activity>().ToTable("Activities");
-    }
-}
