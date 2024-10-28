@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Journey.Application.UseCases.Trips.Activities.Delete;
+using Microsoft.AspNetCore.Mvc;
 using Planner.Application.UseCases.Trips.Activities.Complete;
+using Planner.Application.UseCases.Trips.Activities.Delete;
 using Planner.Application.UseCases.Trips.Activities.Register;
 using Planner.Application.UseCases.Trips.Delete;
 using Planner.Application.UseCases.Trips.GetAll;
@@ -79,6 +81,17 @@ public class TripsController : ControllerBase
     public IActionResult CompleteActivity([FromRoute] Guid tripId, [FromRoute] Guid activityId)
     {
         var useCase = new CompleteActivityForTripUseCase();
+        useCase.Execute(tripId, activityId);
+        return NoContent();
+    }
+
+    [HttpDelete]
+    [Route("{tripId}/activity/{activityId}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status404NotFound)]
+    public IActionResult DeleteActivity([FromRoute] Guid tripId, [FromRoute] Guid activityId)
+    {
+        var useCase = new DeleteActivityForTripUseCase();
         useCase.Execute(tripId, activityId);
         return NoContent();
     }
