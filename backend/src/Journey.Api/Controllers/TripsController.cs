@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Planner.Application.UseCases.Trips.Activities.Complete;
 using Planner.Application.UseCases.Trips.Activities.Register;
 using Planner.Application.UseCases.Trips.Delete;
 using Planner.Application.UseCases.Trips.GetAll;
@@ -70,5 +71,17 @@ public class TripsController : ControllerBase
         var response = useCase.Execute(tripId, request);
         return Created(string.Empty, response);
     }
+
+    [HttpPut]
+    [Route("{tripId}/activity/{activityId}/complete")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status404NotFound)]
+    public IActionResult CompleteActivity([FromRoute] Guid tripId, [FromRoute] Guid activityId)
+    {
+        var useCase = new CompleteActivityForTripUseCase();
+        useCase.Execute(tripId, activityId);
+        return NoContent();
+    }
+
 
 }
