@@ -1,5 +1,4 @@
-﻿using Journey.Application.UseCases.Trips.Activities.Delete;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Planner.Application.UseCases.Trips.Activities.Complete;
 using Planner.Application.UseCases.Trips.Activities.Delete;
 using Planner.Application.UseCases.Trips.Activities.Register;
