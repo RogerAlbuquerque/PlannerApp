@@ -8,6 +8,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planner.Communication", "src\Journey.Communication\Planner.Communication.csproj", "{4C6E5A52-0280-4E25-856E-91378E8DF7D1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planner.Application", "src\Journey.Application\Planner.Application.csproj", "{E6F5DBC0-00F8-4649-995C-7FE6F0D655FC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4C6E5A52-0280-4E25-856E-91378E8DF7D1} = {4C6E5A52-0280-4E25-856E-91378E8DF7D1}
+		{6B9941BF-6FB7-4CF6-9C74-FFE199F96A77} = {6B9941BF-6FB7-4CF6-9C74-FFE199F96A77}
+		{7491156F-1F24-41A3-A3C0-F4D75B730FEF} = {7491156F-1F24-41A3-A3C0-F4D75B730FEF}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planner.Exception", "src\Journey.Exception\Planner.Exception.csproj", "{6B9941BF-6FB7-4CF6-9C74-FFE199F96A77}"
 EndProject

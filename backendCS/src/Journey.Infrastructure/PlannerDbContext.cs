@@ -12,4 +12,4 @@ public class PlannerDbContext : DbContext
     {
         optionsBuilder.UseSqlite("Data Source=\\\\wsl.localhost\\Debian\\home\\roger\\Documents\\journey");
     }
-
+}

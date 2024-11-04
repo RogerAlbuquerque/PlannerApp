@@ -79,33 +79,29 @@ export function CreateTripPage() {
     async function createTrip(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
     
-        if (!destination) {
+        console.log("TA CHEGANDO AQUI?")
+    
+   
+    
+       
+    
+        if (!ownerName) {
           return
         }
     
-        if (!eventStartAndEndDates?.from || !eventStartAndEndDates?.to) {
-          return
-        }
-    
-        if (emailsToInvite.length === 0) {
-          return
-        }
-    
-        if (!ownerName || !ownerEmail) {
-          return
-        }
-    
+        console.log("TA CHEGANDO AQUI? 222222")
         const response = await api.post('/trips', {
-          destination,
-          starts_at: eventStartAndEndDates.from,
-          ends_at: eventStartAndEndDates.to,
-          emails_to_invite: emailsToInvite,
-          owner_name: ownerName,
-          owner_email: ownerEmail
+          name: ownerName,
+          startDate: eventStartAndEndDates!.from,
+          endDate: eventStartAndEndDates!.to,
+          
         })
     
+        console.log("TA CHEGANDO AQUI? 3333333333")
         const { tripId } = response.data
     
+
+        console.log("TA CHEGANDO AQUI? 444444444")
         navigate(`/trips/${tripId}`)
       }
 
