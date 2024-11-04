@@ -20,7 +20,8 @@ export function DestinationAndDateStep({
     isGuestsInputOpen,
     openGuestsInput,
     setDestination,
-    eventStartAndEndDates
+    eventStartAndEndDates,
+    setEventStartAndEndDates
 }: DestinationAndDateStepProps) {
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
 
@@ -53,7 +54,7 @@ export function DestinationAndDateStep({
             <button disabled={isGuestsInputOpen} onClick={openDatePicker} className="flex items-center gap-2">
                 <Calendar className="size-5 text-zinc-400" />
                 <span className="text-lg text-zinc-400 w-40 flex-1">
-                    {displayedDate || 'Quando'}
+                    {displayedDate || 'When?'}
                 </span>
             </button>
 
@@ -69,7 +70,7 @@ export function DestinationAndDateStep({
                             </div>
                         </div>
 
-                        <DayPicker mode="range" />
+                        <DayPicker mode="range" selected={eventStartAndEndDates} onSelect={setEventStartAndEndDates} />
                     </div>
                 </div>
             )}
